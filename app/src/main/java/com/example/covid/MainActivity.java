@@ -82,12 +82,14 @@ public class MainActivity extends AppCompatActivity {
         }
         catch(ApiException ex){
             Log.w(null, "signInResult:failed code=" + ex.getStatusCode());
-            updateUI(null);
+            Toast.makeText(MainActivity.this, "Sign-in Failed. code=" + ex.getStatusCode(), Toast.LENGTH_LONG).show();
+            //updateUI(null, null);
         }
     }
 
-    private void Authenticate(GoogleSignInAccount acc){
+    private void Authenticate(final GoogleSignInAccount acc){
         assert acc != null;
+
         AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
         fAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -95,22 +97,24 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser user = fAuth.getCurrentUser();
-                    updateUI(user);
+//                    if(user == null){
+//                        Toast.makeText(MainActivity.this, "Account is null", Toast.LENGTH_SHORT).show();
+//                    }
+                    updateUI(user, acc);
                 } else {
                     //user is null on startup
-                    updateUI(null);
+                    updateUI(null, acc);
                 }
             }
         });
     }
 
-    private void updateUI(FirebaseUser fUser){
+    private void updateUI(FirebaseUser fUser, GoogleSignInAccount account){
         Intent intent = new Intent(this, SymptomSurveyActivity.class);
         GoogleSignInAccount acc = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+        String username = account.getDisplayName();
+        intent.putExtra("DISPLAY_NAME", username);
         startActivity(intent);
-//        if(acc == null){
-//            Toast.makeText(MainActivity.this, "Account is null", Toast.LENGTH_SHORT).show();
-//        }
     }
 
 }
