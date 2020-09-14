@@ -2,6 +2,7 @@ package com.example.covid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -63,11 +64,11 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(signInIntent, SIGN_IN);
     }
 
-    //here on is untested
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == SIGN_IN){
+            //"the task from this function call is always completed" - https://developers.google.com/identity/sign-in/android
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             //separate method will handle the result
             handleSignInResult(task);
@@ -80,22 +81,22 @@ public class MainActivity extends AppCompatActivity {
             Authenticate(acc);
         }
         catch(ApiException ex){
-            Authenticate(null);
+            Log.w(null, "signInResult:failed code=" + ex.getStatusCode());
+            updateUI(null);
         }
     }
 
     private void Authenticate(GoogleSignInAccount acc){
+        assert acc != null;
         AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
         fAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             //listens for task completion (whether successful or not, should complete)
-            //potential problem: what happens if task doesn't complete?
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     FirebaseUser user = fAuth.getCurrentUser();
                     updateUI(user);
-                }
-                else{
+                } else {
                     //user is null on startup
                     updateUI(null);
                 }
@@ -106,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser fUser){
         Intent intent = new Intent(this, SymptomSurveyActivity.class);
         GoogleSignInAccount acc = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        if(acc != null){
-            //user is signed in - go to app
-            startActivity(intent);
-        }
+        startActivity(intent);
+//        if(acc == null){
+//            Toast.makeText(MainActivity.this, "Account is null", Toast.LENGTH_SHORT).show();
+//        }
     }
 
 }
