@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     updateUI(user);
                 }
                 else{
+                    //user is null on startup
                     updateUI(null);
                 }
             }
@@ -103,12 +104,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser fUser){
+        Intent intent = new Intent(this, SymptomSurveyActivity.class);
         GoogleSignInAccount acc = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if(acc != null){
             //user is signed in - go to app
-            //app currently crashes at this point because nothing is here
-            String userName = acc.getDisplayName();
-            Toast.makeText(MainActivity.this, userName, Toast.LENGTH_SHORT).show();
+            startActivity(intent);
         }
     }
 
