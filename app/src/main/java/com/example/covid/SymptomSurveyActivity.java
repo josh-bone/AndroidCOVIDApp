@@ -10,6 +10,8 @@ import android.widget.CheckBox;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Queue;
 
 public class SymptomSurveyActivity extends AppCompatActivity {
@@ -39,8 +41,11 @@ public class SymptomSurveyActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         String nameKey = extras.getString("DISPLAY_NAME");
         //stores the number of symptoms that "person" under Users/person
-        DatabaseReference reference = database.getReference("Users/"+nameKey);
-        reference.setValue(numSymptoms);
+        DatabaseReference symRef = database.getReference("Users/"+nameKey+"/symptoms");
+        symRef.setValue(numSymptoms);
+        Date curTime = Calendar.getInstance().getTime();
+        DatabaseReference timeRef = database.getReference("Users/"+nameKey+"/TimeCompleted");
+        timeRef.setValue(curTime);
     }
 
     public void onCheckboxClicked(View view){
