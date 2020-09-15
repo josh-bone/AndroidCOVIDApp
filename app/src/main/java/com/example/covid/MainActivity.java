@@ -110,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser fUser, GoogleSignInAccount account){
+        //note: still need to add logic that checks user's status
+        //and sends them to admin activity if they are admin
         Intent intent = new Intent(this, SymptomSurveyActivity.class);
         GoogleSignInAccount acc = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         String username = account.getDisplayName();
