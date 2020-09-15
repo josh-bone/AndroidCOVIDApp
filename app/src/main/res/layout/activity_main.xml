@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:paddingTop="?attr/actionBarSize">
 
+
     <com.google.android.gms.common.SignInButton
         android:id="@+id/SignInBtn"
         android:layout_width="wrap_content"
@@ -17,5 +18,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/SignOutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SignInBtn" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

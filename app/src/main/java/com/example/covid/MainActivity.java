@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -33,6 +34,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button mSignOutButton;
     private String[] listOfAdmins = {"Josh Bone"}; // i know this isn't scalable but it's a temporary fix. And assuming there isn't too many admins this is fast
     private SignInButton mSignInButton;
     private GoogleSignInClient mGoogleSignInClient;
@@ -43,15 +45,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         fAuth = FirebaseAuth.getInstance();
         mSignInButton = findViewById(R.id.SignInBtn);
-
+        mSignOutButton = findViewById(R.id.SignOutBtn);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        mSignOutButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                fAuth.signOut();
+            }
+        });
 
         mSignInButton.setOnClickListener(new View.OnClickListener(){
             @Override

@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-//this class pulls info from the database and displays it to admin
+//this class pulls info from the database and displays it to admins
 public class AdminActivity extends AppCompatActivity {
 
     ListView listView;
