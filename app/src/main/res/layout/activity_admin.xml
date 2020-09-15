@@ -12,7 +12,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Non-Compliant Students"
+        android:text="Symptomatic Students"
         android:textSize="20sp"
         android:textStyle="bold">
 
@@ -20,7 +20,7 @@
 
 <!--    need to update this text dynamically with data pulled from firebase-->
     <ListView
-        android:id = "@+id/list"
+        android:id = "@+id/myListView"
         android:layout_width = "wrap_content"
         android:layout_height = "match_parent"
         android:divider = "#000"

@@ -29,8 +29,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
+    private String[] listOfAdmins = {"Josh Bone"}; // i know this isn't scalable but it's a temporary fix. And assuming there isn't too many admins this is fast
     private SignInButton mSignInButton;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth fAuth;
@@ -112,11 +115,28 @@ public class MainActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser fUser, GoogleSignInAccount account){
         //note: still need to add logic that checks user's status
         //and sends them to admin activity if they are admin
-        Intent intent = new Intent(this, SymptomSurveyActivity.class);
-        GoogleSignInAccount acc = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         String username = account.getDisplayName();
-        intent.putExtra("DISPLAY_NAME", username);
-        startActivity(intent);
+
+        //check if user is admin
+        boolean isAdmin = false;
+        for(String element : listOfAdmins){
+            if( element.equals(username) ){
+                isAdmin = true;
+                break;
+            }
+        }
+
+        if(isAdmin){
+            Intent intent = new Intent(this, AdminActivity.class);
+            startActivity(intent);
+        }
+        else {
+            //user is student, send them to fill out the survey
+            Intent intent = new Intent(this, SymptomSurveyActivity.class);
+            GoogleSignInAccount acc = GoogleSignIn.getLastSignedInAccount(getApplicationContext()); //probably can delete this line...
+            intent.putExtra("DISPLAY_NAME", username);
+            startActivity(intent);
+        }
     }
 
 }

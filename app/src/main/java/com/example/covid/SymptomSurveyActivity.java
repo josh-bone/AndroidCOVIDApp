@@ -45,9 +45,13 @@ public class SymptomSurveyActivity extends AppCompatActivity {
         //stores the number of symptoms that "person" under Users/person
         DatabaseReference symRef = database.getReference("Users/"+nameKey+"/symptoms");
         symRef.setValue(numSymptoms);
-        Date curTime = Calendar.getInstance().getTime();
-        DatabaseReference timeRef = database.getReference("Users/"+nameKey+"/TimeCompleted");
-        timeRef.setValue(curTime);
+        DatabaseReference ref = database.getReference("Users/"+nameKey+"/name");
+        ref.setValue(nameKey);
+        ref = database.getReference("Completed"+nameKey);
+        ref.setValue(true);
+        //Date curTime = Calendar.getInstance().getTime();
+        //DatabaseReference timeRef = database.getReference("Users/"+nameKey+"/TimeCompleted");
+        //timeRef.setValue(curTime);
     }
 
     public void onCheckboxClicked(View view){
