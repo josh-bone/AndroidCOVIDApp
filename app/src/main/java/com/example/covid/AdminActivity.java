@@ -31,25 +31,25 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin);
         listView = findViewById(R.id.myListView);
         mlist = new ArrayList<String>();
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mlist);
-        listView.setAdapter(adapter);
-        RefreshList();
-    }
 
-    private void RefreshList(){
         //note: final keyword means it can't be assigned more than once
-        //final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Completed");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    String name = snapshot.getKey();
+            public void onDataChange (@NonNull DataSnapshot dataSnapshot){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Object completed = snapshot.getValue(); //whether or not they completed the survey
                     if(completed.toString().equals("false")) {
-                        mlist.add(name); // for some reason this isn't updating the listView...
+                        String name = snapshot.getKey();
+                        mlist.add(name);
                     }
                 }
+                //NOTE: VERY IMPORTANT! This code needs to be here because the API is asynchronous.
+                //If we set the adapter back in the onCreate() method, even if it comes after this
+                //code, it will execute before the list is populated!!
+                //For more info see https://stackoverflow.com/questions/47847694/how-to-return-datasnapshot-value-as-a-result-of-a-method/47853774
+                adapter = new ArrayAdapter<String>(AdminActivity.this, android.R.layout.simple_list_item_1, mlist);
+                listView.setAdapter(adapter);
             }
 
             @Override
@@ -57,5 +57,8 @@ public class AdminActivity extends AppCompatActivity {
                 System.out.println("Failed to read. Error = " + error.getCode());
             }
         });
+
+
     }
+
 }
