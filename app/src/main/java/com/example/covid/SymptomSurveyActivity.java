@@ -47,8 +47,15 @@ public class SymptomSurveyActivity extends AppCompatActivity {
         symRef.setValue(numSymptoms);
         DatabaseReference ref = database.getReference("Users/"+nameKey+"/name");
         ref.setValue(nameKey);
-        ref = database.getReference("Completed"+nameKey);
+        ref = database.getReference("Completed/"+nameKey);
         ref.setValue(true);
+        ref = database.getReference("Symptomatic/"+nameKey);
+        if(numSymptoms == 0){
+            ref.setValue(false);
+        }
+        else{
+            ref.setValue(true);
+        }
         //Date curTime = Calendar.getInstance().getTime();
         //DatabaseReference timeRef = database.getReference("Users/"+nameKey+"/TimeCompleted");
         //timeRef.setValue(curTime);

@@ -19,7 +19,7 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Non-surveyed Students"
+            android:text="Symptomatic Students"
             android:textSize="20sp"
             android:textStyle="bold"></TextView>
 
@@ -28,7 +28,7 @@
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:text="View Symptoms" />
+            android:text="View Surveyed" />
 
     </LinearLayout>
 

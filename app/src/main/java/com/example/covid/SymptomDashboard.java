@@ -2,17 +2,13 @@ package com.example.covid;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import java.util.ArrayList;
-import android.os.Bundle;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,12 +16,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static android.view.View.*;
+import java.util.ArrayList;
 
-//this class pulls info from the database and displays it to admins
-public class AdminActivity extends AppCompatActivity {
+public class SymptomDashboard extends AppCompatActivity {
 
-    Button toSymptoms;
+    Button toComplete;
     ListView listView;
     ArrayList<String> mlist;
     ArrayAdapter<String> adapter;
@@ -33,26 +28,26 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin);
+        setContentView(R.layout.activity_symptom_dashboard);
         listView = findViewById(R.id.myListView);
-        toSymptoms = findViewById(R.id.toSymptoms);
+        toComplete = findViewById(R.id.toSymptoms);
         mlist = new ArrayList<String>();
 
-        toSymptoms.setOnClickListener(new View.OnClickListener(){
+        toComplete.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                switchDashboard();
+                switchDash();
             }
         });
 
         //note: final keyword means it can't be assigned more than once
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Completed");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Symptomatic");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange (@NonNull DataSnapshot dataSnapshot){
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Object completed = snapshot.getValue(); //whether or not they completed the survey
-                    if(completed.toString().equals("false")) {
+                    Object isSymp = snapshot.getValue(); //whether or not they are symptomatic
+                    if(isSymp.toString().equals("true")) {
                         String name = snapshot.getKey();
                         mlist.add(name);
                     }
@@ -61,7 +56,7 @@ public class AdminActivity extends AppCompatActivity {
                 //If we set the adapter back in the onCreate() method, even if it comes after this
                 //code, it will execute before the list is populated!!
                 //For more info see https://stackoverflow.com/questions/47847694/how-to-return-datasnapshot-value-as-a-result-of-a-method/47853774
-                adapter = new ArrayAdapter<String>(AdminActivity.this, android.R.layout.simple_list_item_1, mlist);
+                adapter = new ArrayAdapter<String>(SymptomDashboard.this, android.R.layout.simple_list_item_1, mlist);
                 listView.setAdapter(adapter);
             }
 
@@ -70,11 +65,10 @@ public class AdminActivity extends AppCompatActivity {
                 System.out.println("Failed to read. Error = " + error.getCode());
             }
         });
-
     }
-    private void switchDashboard(){
-        Intent intent = new Intent(AdminActivity.this, SymptomDashboard.class);
+
+    private void switchDash(){
+        Intent intent = new Intent(SymptomDashboard.this, AdminActivity.class);
         startActivity(intent);
     }
-
 }
