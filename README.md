@@ -12,6 +12,7 @@ Boston University
 Below are screenshots of what the app would look like.
 
 This is a picture of a welcome screen.
+
 <img src="images/welcomeScreen.png" width="150">
 
 This is a picture of the survey screen.
@@ -20,5 +21,4 @@ This is a picture of the survey screen.
 This is a picture of the nonsurveyed.
 <img src="images/nonSurveyed.png" width="150">
 
-This is a picture of the symptomatic screen.
 <img scr="images/symptomaticScreen.png" width="150">
