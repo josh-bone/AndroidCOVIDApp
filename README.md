@@ -15,10 +15,12 @@ This is a picture of a welcome screen.
 
 <img src="images/welcomeScreen.png" width="150">
 
-This is a picture of the survey screen.
+This is a picture of the symptoms screen.
+
 <img src="images/survey_screen.png" width="150">
 
 This is a picture of the nonsurveyed.
+
 <img src="images/nonSurveyed.png" width="150">
 
 <img scr="images/symptomaticScreen.png" width="150">
