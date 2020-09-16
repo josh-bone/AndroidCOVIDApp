@@ -1,11 +1,11 @@
 # AndroidCOVIDApp
 
 
-<img src="images/eng_logo.jpg" width="150">
+<img src="images/eng_logo.jpg" width="170">
 
 Created by Joshua Bone and Salem Bugshan
 
-For EC463 - Sr. Design Miniproject 
+EC463 - Sr. Design Miniproject 
 
 Boston University
 
