@@ -1,5 +1,6 @@
 package com.example.covid;
 
+//TODO: implement this class to store local student data more efficiently
 public class Student {
     //public int TimeCompleted;
     public int symptoms;
