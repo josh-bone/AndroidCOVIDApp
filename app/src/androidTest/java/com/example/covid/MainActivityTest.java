@@ -35,6 +35,7 @@ public class MainActivityTest {
         ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class);
         onView(withId(R.id.SignInBtn)).check(matches(isDisplayed()));
         onView(withId(R.id.SignOutBtn)).check(matches(isDisplayed()));
+        onView(withId(R.id.coronaBtn)).check(matches(isDisplayed()));
     }
 
     @Test

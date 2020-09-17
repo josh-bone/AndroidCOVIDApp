@@ -24,3 +24,9 @@ This is a picture of the nonsurveyed.
 <img src="images/nonSurveyed.png" width="150">
 
 <img scr="images/symptomaticScreen.png" width="150">
+
+
+
+We are using Espresso for instrumentation tests.
+
+We are using Retrofit 2 for api requests from covid19api.com

@@ -1,12 +1,14 @@
 package com.example.covid;
 
 import android.content.Intent;
+import android.icu.text.IDNA;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.covid.ui.InfoDashActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -35,8 +37,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private Button mSignOutButton;
-    private String[] listOfAdmins = {"Josh Bone"}; // i know this isn't scalable but it's a temporary fix. And assuming there isn't too many admins this is fast
+    private Button mCoronaBtn;
     private SignInButton mSignInButton;
+
+    private String[] listOfAdmins = {"Josh Bone"}; // i know this isn't scalable but it's a temporary fix. And assuming there isn't too many admins this is fast
+
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth fAuth;
     private int SIGN_IN = 1;
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         mSignInButton = findViewById(R.id.SignInBtn);
         mSignOutButton = findViewById(R.id.SignOutBtn);
+        mCoronaBtn = findViewById(R.id.coronaBtn);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -60,13 +66,24 @@ public class MainActivity extends AppCompatActivity {
                 fAuth.signOut();
             }
         });
-
+        mCoronaBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                toInfoDash();
+            }
+        });
         mSignInButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 signIn();
             }
         });
+    }
+
+    //this method gets called when the user clicks "COVID-19 info..." button
+    private void toInfoDash(){
+        Intent intent = new Intent(this, InfoDashActivity.class);
+        startActivity(intent);
     }
 
     //this method gets called when the google sign-in button is clicked
