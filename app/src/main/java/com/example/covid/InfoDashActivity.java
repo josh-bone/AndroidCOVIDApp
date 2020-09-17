@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,8 +52,8 @@ public class InfoDashActivity extends AppCompatActivity {
                         mNumber.setText("error: API gave null reference");
                     }
                     else {
-                        //TODO: format with commas for readability
-                        mNumber.setText(Integer.toString(numConfirmed));
+                        String formatted = NumberFormat.getNumberInstance(Locale.US).format(numConfirmed);
+                        mNumber.setText(formatted);
                     }
                     String date = bod.getDate(); //TODO: format this nicely before displaying
                     mDateTime.setText(date);
