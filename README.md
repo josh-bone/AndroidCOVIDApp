@@ -11,13 +11,13 @@ Boston University
 
 # Info
 
-Instrumentation tests are located under app/src/androidTests. 
+Instrumentation tests are located under the files app/src/androidTests. 
 
 app/src/main/java/com/example/covid/ contains all functional (non-test) code.
 
 The project is structured as follows:
 
-MainActivity is displayed on startup. From here you can either sign in, or go to the Info Dashboard (infoDashActivity), which contains information pulled from covid19api.com. Because this api is rate-limited, it may display all zeros if requests are sent too frequently.
+MainActivity is displayed on startup which is the first page. From here you can either sign in, or go to the Info Dashboard (infoDashActivity), which contains information pulled from covid19api.com. Because this api is rate-limited, it may display all zeros if requests are sent too frequently.
 
 If you log-in from the MainActivity screen, you will be taken to one of two places.
 
@@ -50,7 +50,7 @@ Here is the (API) info dashboard, after we hit the rate limit during testing:
 
 <img src="images/dashboard.png" width="150">
 
-Unfortunately, I didn't grab a screenshot before the rate-limit was hit, when it was displaying real data.
+Unfortunately, I didn't grab a screenshot before the rate-limit was hit, when it was displaying real data. The app takes some time to work so please be patient.
 
 
 # External Dependencies:
