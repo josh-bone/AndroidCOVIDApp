@@ -15,7 +15,26 @@ import static org.junit.Assert.*;
 public class SymptomDashboardTest {
     @Test
     public void test_viewIsDisplayed() {
-        ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class);
+        ActivityScenario<SymptomDashboard> scenario = ActivityScenario.launch(SymptomDashboard.class);
         onView(withId(R.id.container)).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void test_titleIsDisplayed() {
+        ActivityScenario<SymptomDashboard> scenario = ActivityScenario.launch(SymptomDashboard.class);
+        onView(withId(R.id.title)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void test_buttonIsDisplayed() {
+        ActivityScenario<SymptomDashboard> scenario = ActivityScenario.launch(SymptomDashboard.class);
+        onView(withId(R.id.toSymptoms)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void test_listIsDisplayed() {
+        ActivityScenario<SymptomDashboard> scenario = ActivityScenario.launch(SymptomDashboard.class);
+        onView(withId(R.id.myListView)).check(matches(isDisplayed()));
+    }
+
 }

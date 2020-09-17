@@ -30,6 +30,19 @@ public class MainActivityTest {
         onView(withId(R.id.container)).check(matches(isDisplayed()));
     }
 
+    @Test
+    public void test_buttonsAreVisible(){
+        ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class);
+        onView(withId(R.id.SignInBtn)).check(matches(isDisplayed()));
+        onView(withId(R.id.SignOutBtn)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void test_titleIsVisible(){
+        ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class);
+        onView(withId(R.id.textView)).check(matches(isDisplayed()));
+    }
+
     @After
     public void tearDown() throws Exception {
     }
