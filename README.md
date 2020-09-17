@@ -9,6 +9,8 @@ EC463 - Sr. Design Miniproject
 
 Boston University
 
+# Screenshots
+
 Below are screenshots of what the app would look like.
 
 This is a screenshot of the login screen. This activity is launched on startup.
@@ -32,7 +34,7 @@ Here is the (API) info dashboard, after we hit the rate limit during testing:
 Unfortunately, I didn't grab a screenshot before the rate-limit was hit, when it was displaying real data.
 
 
-External Dependencies:
+# External Dependencies:
 
 We use Espresso for instrumentation tests.
 
