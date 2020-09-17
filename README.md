@@ -25,7 +25,14 @@ This is a picture of the nonsurveyed.
 
 <img scr="images/symptomaticScreen.png" width="150">
 
+Here is the (API) info dashboard, after we hit the rate limit during testing:
 
+<img src="images/dashboard.png" width="150">
+
+Unfortunately, I didn't grab a screenshot before the rate-limit was hit, when it was displaying real data.
+
+
+External Dependencies:
 
 We are using Espresso for instrumentation tests.
 
