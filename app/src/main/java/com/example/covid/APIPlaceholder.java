@@ -1,10 +1,6 @@
 package com.example.covid;
 
-import com.example.covid.ui.CountryData;
-import com.example.covid.ui.GlobalData;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class APIPlaceholder {
     private GlobalData Global;

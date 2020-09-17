@@ -1,16 +1,10 @@
-package com.example.covid.ui;
+package com.example.covid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.covid.APIPlaceholder;
-import com.example.covid.R;
-import com.example.covid.covidAPI;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,6 +49,7 @@ public class InfoDashActivity extends AppCompatActivity {
                         mNumber.setText("error: API gave null reference");
                     }
                     else {
+                        //TODO: format with commas for readability
                         mNumber.setText(Integer.toString(numConfirmed));
                     }
                     String date = bod.getDate(); //TODO: format this nicely before displaying
