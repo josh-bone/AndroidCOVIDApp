@@ -7,7 +7,7 @@
     tools:context=".InfoDashActivity">
 
     <TextView
-        android:id="@+id/totalConfirmed"
+        android:id="@+id/confirmedTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -18,20 +18,22 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textSize="16sp"
         app:layout_constraintVertical_bias="0.15" />
 
     <TextView
         android:id="@+id/confirmedNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:textSize="16sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:text="____ cases"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/confirmedTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/totalConfirmed"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/confirmedTitle"
+        app:layout_constraintTop_toTopOf="@+id/confirmedTitle"
         app:layout_constraintVertical_bias="0.15" />
 
     <TextView
@@ -42,26 +44,95 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:text="datetime"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/asOf"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/asOf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="As of"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/deathTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Total Deaths (Global):"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmedTitle"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/numDeaths"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="__ deaths"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/deathTitle"
+        app:layout_constraintStart_toEndOf="@+id/deathTitle"
+        app:layout_constraintStart_toStartOf="@+id/confirmedNumber"
+        app:layout_constraintTop_toTopOf="@+id/deathTitle" />
+
+    <TextView
+        android:id="@+id/recoveredTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:text="Total Recovered (Global):"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deathTitle"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/numRecovered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="__ recovered"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/recoveredTitle"
+        app:layout_constraintStart_toEndOf="@+id/recoveredTitle"
+        app:layout_constraintStart_toStartOf="@+id/confirmedNumber"
+        app:layout_constraintTop_toTopOf="@+id/recoveredTitle"
+        app:layout_constraintVertical_bias="0.719" />
+
+    <Button
+        android:id="@+id/toLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Back to Login Screen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
