@@ -9,6 +9,25 @@ EC463 - Sr. Design Miniproject
 
 Boston University
 
+# Info
+
+Instrumentation tests are located under app/src/androidTests. 
+
+app/src/main/java/com/example/covid/ contains all functional (non-test) code.
+
+The project is structured as follows:
+
+MainActivity is displayed on startup. From here you can either sign in, or go to the Info Dashboard (infoDashActivity), which contains information pulled from covid19api.com. Because this api is rate-limited, it may display all zeros if requests are sent too frequently.
+
+If you log-in from the MainActivity screen, you will be taken to one of two places.
+
+(1) If you are not listed as an admin, you are assumed to be a student, and you are taken to the SymptomSurveyActivity. Here, you fill out and submit a survey regarding COVID-19 symptoms. This data is securely stored in Firebase's Real Time Database.
+
+(2) If you are listed as an admin, you will be taken to the AdminActivity, which shows you which students have not completed the survey. From here you can move back and forth to the SymptomDashboard, which shows you which students have completed the survey, and are symptomatic.
+
+
+note: this project is not HIPAA-compliant, and has been developed for educational purposes only.
+
 # Screenshots
 
 Below are screenshots of what the app would look like.
