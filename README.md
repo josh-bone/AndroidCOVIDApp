@@ -11,15 +11,15 @@ Boston University
 
 Below are screenshots of what the app would look like.
 
-This is a picture of a welcome screen.
+This is a screenshot of the login screen. This activity is launched on startup.
 
 <img src="images/welcomeScreen.png" width="150">
 
-This is a picture of the symptoms screen.
+This is a screenshot of the survey screen.
 
 <img src="images/survey_screen.png" width="150">
 
-This is a picture of the nonsurveyed.
+Here we display the students who have not completed the survey:
 
 <img src="images/nonSurveyed.png" width="150">
 
@@ -34,6 +34,8 @@ Unfortunately, I didn't grab a screenshot before the rate-limit was hit, when it
 
 External Dependencies:
 
-We are using Espresso for instrumentation tests.
+We use Espresso for instrumentation tests.
 
-We are using Retrofit 2 for api requests from covid19api.com
+We use Retrofit 2 for api requests from covid19api.com
+
+Firebase is used for google sign-on, and we also take advantage of their Real Time Database to store the results of students' symptom-survey.
