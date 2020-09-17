@@ -12,6 +12,7 @@ Boston University
 # Info
 
 Instrumentation tests are located under the files app/src/androidTests. 
+The app was tested on an Google Pixel 3 emulator.
 
 app/src/main/java/com/example/covid/ contains all functional (non-test) code.
 
